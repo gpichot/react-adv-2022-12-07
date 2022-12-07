@@ -1,0 +1,19 @@
+{
+  "id": 1,
+  "name": "bulbasaur",
+  "types": ["grass", "poison"],
+  "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+  "weight": 69,
+  "height": 7,
+  "base_experience": 64,
+  "forms": ["bulbasaur"],
+  "abilities": ["overgrow", "chlorophyll"],
+  "stats": {
+    "hp": 45,
+    "attack": 49,
+    "defense": 49,
+    "special-attack": 65,
+    "special-defense": 65,
+    "speed": 45
+  }
+}
