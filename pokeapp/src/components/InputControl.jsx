@@ -5,15 +5,9 @@ import styles from "./InputControl.module.scss";
 
 /**
  * @param {{ label?: string } & React.ComponentProps<'input'>} props Props
- * @returns
  */
 
-export default function InputControl({
-  label,
-  className,
-  name,
-  ...inputProps
-}) {
+function InputControlBase({ label, className, name, ...inputProps }, ref) {
   const id = `input-${name}`;
   return (
     <div
@@ -22,7 +16,11 @@ export default function InputControl({
       })}
     >
       {label && <label htmlFor={id}>{label}</label>}
-      <input {...inputProps} id={id} name={name} />
+      <input {...inputProps} ref={ref} id={id} name={name} />
     </div>
   );
 }
+
+const InputControl = React.forwardRef(InputControlBase);
+
+export default InputControl;

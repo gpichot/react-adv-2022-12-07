@@ -25,10 +25,15 @@ export default function PokemonForm() {
 
   const isDisabled = name === "" || type === "";
 
+  const focusRef = React.useCallback((ref: HTMLInputElement | null) => {
+    ref?.focus();
+  }, []);
+
   return (
     <form className={styles.pokemonForm} onSubmit={handleSubmit}>
       <div className={styles.pokemonFormFields}>
         <InputControl
+          ref={focusRef}
           required
           label="Name"
           name="name"
