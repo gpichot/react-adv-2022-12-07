@@ -3,11 +3,15 @@ import classnames from "classnames";
 
 import styles from "./InputControl.module.scss";
 
-/**
- * @param {{ label?: string } & React.ComponentProps<'input'>} props Props
- */
+export type InputControlBaseProps = {
+  label: string;
+  name: string;
+} & React.ComponentPropsWithRef<"input">;
 
-function InputControlBase({ label, className, name, ...inputProps }, ref) {
+function InputControlBase(
+  { label, className, name, ...inputProps }: InputControlBaseProps,
+  ref: React.Ref<HTMLInputElement>
+) {
   const id = `input-${name}`;
   return (
     <div

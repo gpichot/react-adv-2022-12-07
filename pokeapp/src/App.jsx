@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Route, Routes, useParams } from "react-router-dom";
 
 import { PokemonList } from "./features/pokemons";
+import PokemonDetails from "./features/pokemons/components/PokemonDetails";
 import PokemonForm from "./features/pokemons/components/PokemonForm";
 import { usePokedex } from "./features/pokemons/PokedexContext";
 
@@ -20,12 +21,6 @@ function Navigation() {
       <Link to="/pokemons/new">Create a new pokemon</Link>
     </div>
   );
-}
-
-function PokemonDetails() {
-  const params = useParams();
-
-  return <>Details Pokemon {params.id}</>;
 }
 
 function App() {

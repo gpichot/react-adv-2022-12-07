@@ -1,11 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { usePokedex } from "../PokedexContext";
 import { PokemonDetail } from "../types";
 import PokemonTypePill from "./PokemonTypePill";
 
 import styles from "./PokemonCard.module.scss";
-import { Link } from "react-router-dom";
 
 type PokemonCardProps = {
   pokemon: PokemonDetail;
@@ -44,7 +44,7 @@ export default function PokemonCard(props: PokemonCardProps) {
         {isCaptured ? <p>Captured!</p> : <p>Capture me please!</p>}
 
         <h2 className={styles.pokemonCardName}>{pokemon.name}</h2>
-        <img src={pokemon.image} alt={pokemon.name} />
+        <img src={pokemon.image} alt={pokemon.name} height={96} />
         <p>{types}</p>
       </div>
       <div className={styles.pokemonCardActions}>

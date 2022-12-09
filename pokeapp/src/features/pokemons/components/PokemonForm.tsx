@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import InputControl from "@/components/InputControl";
 
@@ -9,6 +11,29 @@ export default function PokemonForm() {
   const [type, setType] = React.useState("");
   const [height, setHeight] = React.useState("");
   const [weight, setWeight] = React.useState("");
+  const navigate = useNavigate();
+
+  const queryClient = useQueryClient();
+  const mutation = useMutation(
+    async (payload) => {
+      const response = await fetch(
+        "https://pokeapi.fly.dev/gpichot20221207/pokemons",
+        {
+          method: "POST",
+          body: JSON.stringify(payload),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      return response.json();
+    },
+    {
+      onSuccess() {
+        queryClient.invalidateQueries(["pokemons", { offset: 0 }]);
+      },
+    }
+  );
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -20,7 +45,7 @@ export default function PokemonForm() {
       weight: parseInt(weight),
     };
 
-    console.log(payload);
+    mutation.mutate(payload);
   };
 
   const isDisabled = name === "" || type === "";
